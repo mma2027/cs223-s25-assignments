@@ -8,33 +8,33 @@
 #include <stdlib.h>
 
 int main() {
-	printf("Welcome to Math Game! ");
+	printf("Welcome to Math Game!\n");
 	printf("How many rounds do you want to play? ");
-	int amount_of_rounds = 0;
-	scanf("%d", &amount_of_rounds);
+	int amountOfRounds = 0;
+	scanf("%d", &amountOfRounds);
 
 	//initializing all the variables used
-	int number1;
-	int number2;
-	int answer;
-	int correct_answers = 0;
+	short number1;
+	short number2;
+	short answer;
+	short correctAnswers = 0;
 
-	for(int i = 0; i < amount_of_rounds; i++){
+	for(int i = 0; i < amountOfRounds; i++){
 		//setting the two numbers to a random value between 1 - 10
 		number1 = rand() % 9 + 1;
 		number2 = rand() % 9 + 1;
 
-		printf("%d + %d = ? ", number1, number2);
-		scanf("%d", &answer);
+		printf("\n%hi + %hi = ? ", number1, number2);
+		scanf("%hi", &answer);
 
 		if (answer == number1 + number2){
 			printf("Correct!\n");
-			correct_answers += 1;
+			correctAnswers += 1;
 		} else {
 			printf("Incorrect :(\n");
 		}
 	}
 
-	printf("You answered %d/%d correctly.\n", correct_answers, amount_of_rounds);
+	printf("You answered %hi/%hi correctly.\n", correctAnswers, amountOfRounds);
 	return 0;
 }
