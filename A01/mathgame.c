@@ -1,6 +1,7 @@
 /***************************************************
  * mathgame.c
  * Author: Maxfield Ma
+ * Date: 1/24/2025
  * Implements a math game
  */
 
@@ -19,7 +20,7 @@ int main() {
     short answer;
     short correctAnswers = 0;
 
-    for(int i = 0; i < amountOfRounds; i++){
+    for (int i = 0; i < amountOfRounds; i++) {
         //setting the two numbers to a random value between 1 - 10
         number1 = rand() % 9 + 1;
         number2 = rand() % 9 + 1;
@@ -27,7 +28,7 @@ int main() {
         printf("\n%hi + %hi = ? ", number1, number2);
         scanf("%hi", &answer);
 
-        if (answer == number1 + number2){
+        if (answer == number1 + number2) {
             printf("Correct!\n");
             correctAnswers += 1;
         } else {
