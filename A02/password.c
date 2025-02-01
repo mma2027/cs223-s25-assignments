@@ -1,7 +1,7 @@
 /***************************************************
  * Author: Maxfield Ma
  * GitHub: mma2027
- * Intent: creates a bad password from a word
+ * Intent: creates a bad password from a word by replacing certain letters
  * Date: 1/31/2025
  */
 #include <stdio.h>
