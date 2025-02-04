@@ -3,6 +3,7 @@
 #include <string.h>
 #include <time.h>
 
+//simple program to keep track of the value of the current winning guess
 int compare( int a, int b, int price){
    if (a > price && b > price){
       return price + 1;
@@ -32,6 +33,8 @@ int main()
    win = compare(win, ai2, price);
 
    printf("\n%i %i %i %i", guess, ai1, ai2, price);
+
+   //figure out who had the winning guess
    if( win > price){
       printf("No one won");
    } else if( win == guess){
