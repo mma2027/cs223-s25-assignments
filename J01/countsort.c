@@ -8,21 +8,26 @@
 #include <string.h>
 
 void sort(char* input){
-   char sortedDigits[32];
-   int index = 0;
+    char sortedDigits[32];
+    //this index keeps track of the position in sortedDigits
+    int index = 0;
    
-   //looks for characters and adds them to sortedDigits
-   for( int i = '0'; i <= '9'; i++){
-      for( int j = 0; j < strlen(input); j++ ){
-         if( input[j] == i ) {
-            sortedDigits[index] = i;
-            index++;
-         }
-      }
-   }
+    //looks for characters and adds them to sortedDigits
+    //searching for characters 0-9
+    for( int i = '0'; i <= '9'; i++){
+        //searching for specified character in input
+        for( int j = 0; j < strlen(input); j++ ){
+            if( input[j] == i ) {
+                sortedDigits[index] = i;
+                index++;
+            }
+        }
+    }
+    //create a valid string (valgrind was having problems with this it seems)
+    sortedDigits[index] = '\0';
 
-   //replace input with sortedDigits
-   strcpy(input, sortedDigits);
+    //replace input with sortedDigits
+    strcpy(input, sortedDigits);
 }
 
 
@@ -30,13 +35,13 @@ void sort(char* input){
 
 int main()
 {
-   char digits[32];
+    char digits[32];
 
-   printf("Enter digits: ");
-   scanf("%s", digits);
+    printf("Enter digits: ");
+    scanf("%s", digits);
 
-   sort(digits);
+    sort(digits);
 
-   printf("%s\n", digits);
-   return 0;
+    printf("%s\n", digits);
+    return 0;
 }
