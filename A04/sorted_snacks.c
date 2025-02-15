@@ -114,6 +114,7 @@ struct snack* sortName(struct snack* head) {
     for (i = head; i && i->next; i = i->next) {
         min = i;
         for (j = i->next; j; j = j->next) {
+            //https://www.geeksforgeeks.org/strcmp-in-c/, compares strings lexicographically
             if (strcmp(j->name, min->name) < 0) {
                 min = j;
             }
@@ -170,25 +171,28 @@ struct snack* sortQuantity(struct snack* head) {
 
 
 int main() {
+    //variables for easy use
     int amount;
     char name[50];
     float cost;
     int quantity;
+
     printf("Enter number of snacks: ");
     scanf("%d", &amount);
 
+    //start of snackBar
     struct snack* snackBar = NULL;
 
     //looping through desired amount of snacks and storing them in their respective place
     for(int i = 0; i < amount; i++){
         printf("Enter a name: ");
-        char name[50];
         scanf("%s", name);
         printf("Enter a cost: $");
         scanf("%f", &cost);
         printf("Enter a quantity: ");
         scanf("%d", &quantity);
 
+        //adding each snack.
         snackBar = insert_first(snackBar, name, cost, quantity);
     }
 
@@ -197,15 +201,15 @@ int main() {
     printList(snackBar);
     
     snackBar = sortCost(snackBar);
-    printf("\nSort Cost:\n");
+    printf("\ncost:\n");
     printList(snackBar);
     
     snackBar = sortName(snackBar);
-    printf("\nSort Name:\n");
+    printf("\nname:\n");
     printList(snackBar);
     
     snackBar = sortQuantity(snackBar);
-    printf("\nSort Quantity:\n");
+    printf("\nquantity:\n");
     printList(snackBar);
 
     //function to free snackbar
