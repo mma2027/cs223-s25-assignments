@@ -32,7 +32,6 @@ int main(int argc, char** argv) {
         strcat(newFilename, index); 
     }
 
-
     printf("Reading %s with width %d and height %d\n", filename, w, h);
     srand(time(NULL));
     for (int i = 0; i < h; i++) {
