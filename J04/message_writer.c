@@ -19,7 +19,7 @@ void write(const char* filename) {
 
   char *comment = "# comment\n";
 
-  fwrite(comment, sizeof(char), strlen(comment), fp);
+  fwrite(comment, sizeof(char), 10, fp);
 
   struct meta_data* temp = malloc(sizeof(struct meta_data));
   temp->version = 0.1;
