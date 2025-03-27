@@ -20,17 +20,48 @@ struct ppm_pixel** read_ppm_2d(const char* filename, int* w, int* h) {
         printf("Filename invalid\n");
         return NULL;
     }
-    char header[3];
+    char header[4];
     fgets(header, sizeof(header), fp);
+    //printf("header: %s", header);
     char buffer[100];
+    /*
+    for( int i = 0; i < 100; i++){
+
     
+        fgets(buffer, 2, fp);
+        printf("buffer: %c\n", buffer[0]);
+    }
+    */
+    fgets(buffer, 2, fp);
+    while( buffer[0] == '#'){
+        //printf("%c", buffer[0]);
+        while (buffer[0] != '\n'){
+            //printf("%c ", buffer[0]);
+            fgets(buffer, 2, fp);
+            //printf("%c", buffer[0]);
+        }
+        //fgets(buffer, 2, fp);
+    }
+    /*
+    while (buffer[0] == '#') {
+        fgets(buffer, 1, fp);
+    }
+    
+    do {
+        if (!fgets(buffer, sizeof(buffer), fp)) {
+            printf("Error reading file\n");
+            fclose(fp);
+            return NULL;
+        }
+    } while (buffer[0] == '#'); // Skip all comment line*/
     //bypassing comment lines and such
-    fgets(buffer, sizeof(buffer), fp);
-    fgets(buffer, sizeof(buffer), fp);
+    //fgets(buffer, sizeof(buffer), fp);
+    //fgets(buffer, sizeof(buffer), fp);
     
     //looks for width and height, returns null if cannot find
     if (fscanf(fp, "%d %d", w, h) != 2) {
         fclose(fp);
+        printf("Can't find width and height");
         return NULL;
     }
     //scaning for max val
