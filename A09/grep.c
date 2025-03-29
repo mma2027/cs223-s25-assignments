@@ -79,6 +79,7 @@ int main(int argc, char* argv[]) {
                 fclose(fp);
             }
             //return amount
+            printf("Process [%d] found %d lines containing keyword: %s\n", getpid(), amount, argv[2]);
             exit(amount);
         }
     }
