@@ -1,3 +1,8 @@
+// Author : Maxfield Ma
+// Date : 3/28/2025
+// Description : Simple program that creates childs that prints text
+
+
 #include <stdio.h>
 #include <unistd.h>
 #include <sys/types.h>
