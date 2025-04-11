@@ -1,3 +1,7 @@
+// Author : Maxfield Ma
+// Date : 4/11/2025
+// Description : Bluring an image
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -17,7 +21,7 @@ int main(int argc, char* argv[]) {
     //failsafe
     if (pixels == NULL) {
         printf("Error: Failed to read the image\n");
-        return 1;  // Indicate error state
+        return 1;
     }
 
     struct ppm_pixel** blur = malloc(h * sizeof(struct ppm_pixel*));
@@ -46,6 +50,7 @@ int main(int argc, char* argv[]) {
         }
     }
 
+    //creating new array with bright spots
     for (int y = 0; y < h; y++){
         for (int x = 0; x < w; x++){
             if (pixels[y][x].red + pixels[y][x].green + pixels[y][x].blue > 600){
@@ -60,6 +65,7 @@ int main(int argc, char* argv[]) {
         }
     }
 
+    //bluring this new array
     for (int y = 0; y < h; y++){
         for (int x = 0; x < w; x++){
             int startX = x - 12;
@@ -88,7 +94,7 @@ int main(int argc, char* argv[]) {
         }
     }
 
-    
+    //combining blurred array with old picture
     for (int y = 0; y < h; y++){
         for (int x = 0; x < w; x++){
             if (pixels[y][x].red + blur[y][x].red > 255) {
