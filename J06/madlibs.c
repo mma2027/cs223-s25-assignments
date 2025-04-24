@@ -23,7 +23,7 @@ int main()
 
     for( int i = 0; i < number; i++){
         printf("Adjective: ");
-        scanf(" %s", adj[i]);
+        scanf(" %31s", adj[i]);
     }
     printf("You are the most ");
     for( int i = number - 1; i > 0; i--){

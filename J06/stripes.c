@@ -41,7 +41,9 @@ int main(int argc, char** argv) {
   int N = strtol(argv[1], NULL, 10);
 
   int size = 1024;
-  struct ppm_pixel** image = malloc(sizeof(struct ppm_pixel) * size * size);
+  struct ppm_pixel **image = malloc(size * sizeof *image);
+  for (int i = 0; i < size; i++)
+      image[i] = malloc(size * sizeof *image[i]);
   struct ppm_pixel* colors = malloc(sizeof(struct ppm_pixel) * N);
   pthread_t* threads = malloc(sizeof(pthread_t) * N);
   struct thread_data* data = malloc(sizeof(struct thread_data) * N);
@@ -69,4 +71,12 @@ int main(int argc, char** argv) {
   }
 
   write_ppm_2d("stripes.ppm", image, size, size);
+
+  for (int i = 0; i < size; i++) {
+    free(image[i]);
+  }
+  free(image);
+  free(colors);
+  free(threads);
+  free(data);
 }
