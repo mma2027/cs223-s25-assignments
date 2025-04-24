@@ -1,13 +1,16 @@
 #include <stdio.h>
 
-int main()
+int main(int argc, char* argv[])
 {
-    FILE* fp = fopen("message", "r");
-    char c = fgetc(fp);
-    while (c != EOF)
+    char* filename = argv[1];
+    unsigned int mask = 0b01111111;
+    FILE* fp = fopen(filename, "rb");
+    char c;
+    while (fread(&c, 1, sizeof(c), fp) > 0)
     {
+        c = (c >> 1) & mask;
         printf("%c", c);
-        c = fgetc(fp);
     }
+    fclose(fp);
     return 0;
 }
