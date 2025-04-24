@@ -13,7 +13,6 @@ int main() {
   signal(SIGINT, sigint_handler);
 
   while (1) {
-      // Do some work
   }
 
   return 0;
